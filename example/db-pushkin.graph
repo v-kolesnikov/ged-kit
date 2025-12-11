@@ -1,0 +1,293 @@
+sandclock[]{%
+  child[id=F2]{%
+    g[id=I2]{%
+      sex=male,
+      name=\pref{Александр Сергеевич} \surn{Пушкин},
+      birth={(JU)1799-05-26}{},
+      death={(JU)1837-01-29}{},
+      profession=Великий поэт,
+    }%
+    p[id=I22]{%
+      sex=female,
+      name=\pref{Наталья Николаевна} \surn{Гончарова},
+      birth={(JU)1812-08-27}{},
+      death={(JU)1863-11-26}{},
+      marriage-={(JU)1831-02-18},
+    }%
+    c[id=I12]{%
+      sex=female,
+      name=\pref{Мария Александровна} \surn{Пушкина},
+      birth={(JU)1832-05-19}{},
+      death={1919-03-07}{},
+    }%
+    child[id=F2]{%
+      g[id=I6]{%
+        sex=male,
+        name=\pref{Александр Александрович} \surn{Пушкин},
+        birth={(JU)1833-07-06}{},
+        death={(JU)1914-07-19}{},
+        profession=Военный,
+      }%
+      p[id=I31]{%
+        sex=female,
+        name=\pref{Софья Александровна} \surn{Ланская},
+        birth={1838}{},
+        death={1875}{},
+      }%
+      c[id=I37]{%
+        sex=male,
+        name=\pref{Пётр Александрович} \surn{Пушкин},
+        birth={}{},
+        death={1870}{},
+      }%
+      c[id=I38]{%
+        sex=female,
+        name=\pref{Наталия Александровна} \surn{Пушкина},
+        birth={(JU)1859-08-05}{},
+        death={(JU)1912-12-05}{},
+      }%
+      c[id=I39]{%
+        sex=female,
+        name=\pref{София Александровна} \surn{Пушкина},
+        birth={1860}{},
+        death={1861}{},
+      }%
+      c[id=I40]{%
+        sex=female,
+        name=\pref{Мария Александровна} \surn{Пушкина},
+        birth={1862}{},
+        death={1939}{},
+      }%
+      c[id=I41]{%
+        sex=male,
+        name=\pref{Александр Александрович} \surn{Пушкин},
+        birth={1863}{},
+        death={1916}{},
+      }%
+      c[id=I42]{%
+        sex=female,
+        name=\pref{Ольга Александровна} \surn{Пушкина},
+        birth={1864}{},
+        death={1908/}{},
+      }%
+      c[id=I43]{%
+        sex=female,
+        name=\pref{Анна Александровна} \surn{Пушкина},
+        birth={1866}{},
+        death={1949}{},
+      }%
+      c[id=I44]{%
+        sex=male,
+        name=\pref{Григорий Александрович} \surn{Пушкин},
+        birth={(JU)1868-09-15}{},
+        death={1940-09-01}{},
+      }%
+      c[id=I45]{%
+        sex=female,
+        name=\pref{Надежда Александровна} \surn{Пушкина},
+        birth={1871}{},
+        death={1915}{},
+      }%
+      c[id=I46]{%
+        sex=female,
+        name=\pref{Вера Александровна} \surn{Пушкина},
+        birth={1872}{},
+        death={1909}{},
+      }%
+      c[id=I47]{%
+        sex=male,
+        name=\pref{Сергей Александрович} \surn{Пушкин},
+        birth={1874}{},
+        death={1898}{},
+      }%
+      union[]{%
+        p[id=I30]{%
+          sex=female,
+          name=\pref{Мария Александровна} \surn{Павлова},
+          birth={1852}{},
+          death={1919}{},
+        }%
+        c[id=I35]{%
+          sex=male,
+          name=\pref{Николай Александрович} \surn{Пушкин},
+          birth={1885}{},
+          death={1964}{},
+        }%
+        c[id=I36]{%
+          sex=female,
+          name=\pref{Елена Александровна} \surn{Пушкина},
+          birth={1890}{},
+          death={1943}{},
+        }%
+      }%
+    }%
+    c[id=I4]{%
+      sex=male,
+      name=\pref{Григорий Александрович} \surn{Пушкин},
+      birth={(JU)1835-05-14}{},
+      death={(JU)1905-08-05}{},
+      profession=Военный,
+    }%
+    child[id=F2]{%
+      g[id=I11]{%
+        sex=female,
+        name=\pref{Наталья Александровна} \surn{Пушкина},
+        birth={(JU)1836-05-23}{},
+        death={(JU)1913-03-10}{},
+      }%
+      p[id=I33]{%
+        sex=male,
+        name=\pref{Михаил Леонтьевич} \surn{Дубельт},
+        birth={(JU)1822-02-09}{},
+        death={(JU)1900-04-06}{},
+        profession=военнослужащий,
+      }%
+      c[id=I48]{%
+        sex=female,
+        name=\pref{Наталья Михайловна} \surn{Дубельт},
+        birth={1854}{},
+        death={1925}{},
+      }%
+      c[id=I49]{%
+        sex=male,
+        name=\pref{Леонтий Михайлович} \surn{Дубельт},
+        birth={1855}{},
+        death={1894}{},
+      }%
+      c[id=I50]{%
+        sex=female,
+        name=\pref{Анна Михайловна} \surn{Дубельт},
+        birth={1861}{},
+        death={1919}{},
+      }%
+      union[]{%
+        p[id=I34]{%
+          sex=male,
+          name=\pref{Николай-Вильгельм} \surn{Нассауский},
+          birth={(JU)1832-09-20}{},
+          death={(JU)1905-09-17}{},
+        }%
+        c[id=I51]{%
+          sex=female,
+          name=\pref{София Николаевна} \surn{Меренберг},
+          birth={(JU)1868-05-20}{},
+          death={1927-09-14}{},
+        }%
+        c[id=I52]{%
+          sex=female,
+          name=\pref{Александра Николаевна} \surn{Меренберг},
+          birth={1869}{},
+          death={1950}{},
+        }%
+        c[id=I53]{%
+          sex=male,
+          name=\pref{Георгий Николаевич} \surn{Меренберг},
+          birth={(JU)1871-02-13}{},
+          death={1948-05-31}{},
+        }%
+      }%
+    }%
+  }%
+  parent[]{%
+    g[id=I3]{%
+      sex=male,
+      name=\pref{Сергей Львович} \surn{Пушкин},
+      birth={(JU)1770-05-23}{},
+      death={(JU)1848-06-28}{},
+      profession=Статский советник,
+    }%
+    parent[]{%
+      g[id=I1]{%
+        sex=male,
+        name=\pref{Лев Александрович} \surn{Пушкин},
+        birth={(JU)1723-02-17}{},
+        death={1790-10-25}{},
+        profession=Артиллерист,
+      }%
+      p[id=I5]{%
+        sex=male,
+        name=\pref{Александр Петрович} \surn{Пушкин},
+        birth={1686/}{},
+        death={1725}{},
+        profession=Богатый помещик,
+      }%
+      p[id=I19]{%
+        sex=female,
+        name=\pref{Евдокия Ивановна} \surn{Головина},
+        birth={(ca)1703}{},
+        death={1725}{},
+      }%
+    }%
+    parent[]{%
+      g[id=I16]{%
+        sex=female,
+        name=\pref{Ольга Васильевна} \surn{Чичерина},
+        birth={(JU)1737-06-05}{},
+        death={(JU)1802-01-22}{},
+      }%
+      p[id=I15]{%
+        sex=male,
+        name=\pref{Василий Иванович} \surn{Чичерин},
+        birth={(JU)1700-03-17}{},
+        death={1743/1748}{},
+      }%
+      p[id=I23]{%
+        sex=female,
+        name=\pref{Лукерья Васильевна} \surn{Приклонская},
+        birth={(JU)1705-02-23}{},
+        death={(JU)1765-02-28}{},
+      }%
+    }%
+  }%
+  parent[]{%
+    g[id=I13]{%
+      sex=female,
+      name=\pref{Надежда Осиповна} \surn{Ганнибал},
+      birth={(JU)1775-06-21}{},
+      death={(JU)1836-03-17}{},
+    }%
+    parent[]{%
+      g[id=I14]{%
+        sex=male,
+        name=\pref{Осип Абрамович} \surn{Ганнибал},
+        birth={(JU)1744-01-20}{},
+        death={(JU)1806-10-12}{},
+        profession=Капитан 2-го ранга морск. артилл.,
+      }%
+      p[id=I18]{%
+        sex=male,
+        name=\pref{Абрам (Ибрагим) Петрович} \surn{Ганнибал},
+        birth={(ca)1696}{},
+        death={(JU)1781-05-14}{},
+        profession=Военный инженер,
+      }%
+      p[id=I17]{%
+        sex=female,
+        name=\pref{Христина Матвеевна} \surn{Шеберг},
+        birth={(ca)1717}{},
+        death={1781}{},
+      }%
+    }%
+    parent[]{%
+      g[id=I10]{%
+        sex=female,
+        name=\pref{Мария Алексеевна} \surn{Пушкина},
+        birth={(JU)1745-01-20}{},
+        death={(JU)1818-06-27}{},
+      }%
+      p[id=I8]{%
+        sex=male,
+        name=\pref{Алексей Фёдорович} \surn{Пушкин},
+        birth={1717}{},
+        death={1777}{},
+        profession=Помещик,
+      }%
+      p[id=I20]{%
+        sex=female,
+        name=\pref{Сарра} \surn{Ржевская},
+        birth={1721}{},
+        death={1790/}{},
+      }%
+    }%
+  }%
+}%

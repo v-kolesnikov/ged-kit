@@ -1,0 +1,5 @@
+;; https://book.babashka.org/#project-setup
+
+{:paths ["bb"]
+ :deps {ged-kit/ged-kit {:local/root "."}
+        io.github.babashka/instaparse-bb {:git/sha "0d0c88e" :git/tag "v0.0.6"}}}

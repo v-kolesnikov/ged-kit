@@ -1,0 +1,554 @@
+sandclock[]{%
+  child[id=F00026]{%
+    g[id=I00071]{%
+      sex=male,
+      name=\pref{} \surn{Black},
+      birth={}{},
+      death={}{},
+    }%
+    child[id=F00026]{%
+      g[id=I00060]{%
+        sex=male,
+        name=\pref{Phineas Nigellus} \surn{Black},
+        birth={1847}{},
+        death={1925}{},
+      }%
+      p[id=I00070]{%
+        sex=female,
+        name=\pref{Ursula} \surn{Flint},
+        birth={}{},
+        death={}{},
+      }%
+      child[id=F00023]{%
+        g[id=I00049]{%
+          sex=male,
+          name=\pref{Arcturus} \surn{Black},
+          birth={1884}{},
+          death={1959}{},
+        }%
+        p[id=I00050]{%
+          sex=female,
+          name=\pref{Lysandra} \surn{Yaxley},
+          birth={}{},
+          death={}{},
+        }%
+        child[id=F00020]{%
+          g[id=I00036]{%
+            sex=female,
+            name=\pref{Cedrella} \surn{Black},
+            birth={}{},
+            death={}{},
+          }%
+          p[id=I00035]{%
+            sex=male,
+            name=\pref{Septimus} \surn{Weasley},
+            birth={}{},
+            death={}{},
+          }%
+          child[id=F00012]{%
+            g[id=I00018]{%
+              sex=male,
+              name=\pref{Arthur} \surn{Weasley},
+              birth={}{},
+              death={}{},
+            }%
+            p[id=I00017]{%
+              sex=female,
+              name=\pref{Molly} \surn{Prewett},
+              birth={}{},
+              death={}{},
+            }%
+            child[id=F00007]{%
+              g[id=I00013]{%
+                sex=female,
+                name=\pref{Ginevra} \surn{Weasley},
+                birth={}{},
+                death={}{},
+              }%
+              p[id=I00001]{%
+                sex=male,
+                name=\pref{Harry} \surn{Potter},
+                birth={}{},
+                death={}{},
+              }%
+              c[id=I00014]{%
+                sex=male,
+                name=\pref{James} \surn{Potter},
+                birth={}{},
+                death={}{},
+              }%
+              c[id=I00015]{%
+                sex=male,
+                name=\pref{Albus} \surn{Potter},
+                birth={}{},
+                death={}{},
+              }%
+              c[id=I00016]{%
+                sex=female,
+                name=\pref{Lily} \surn{Potter},
+                birth={}{},
+                death={}{},
+              }%
+            }%
+            child[id=F00007]{%
+              g[id=I00019]{%
+                sex=male,
+                name=\pref{Ronald} \surn{Weasley},
+                birth={}{},
+                death={}{},
+              }%
+              p[id=I00025]{%
+                sex=female,
+                name=\pref{Hermione} \surn{Granger},
+                birth={}{},
+                death={}{},
+              }%
+              c[id=I00026]{%
+                sex=female,
+                name=\pref{Rose} \surn{Weasley},
+                birth={}{},
+                death={}{},
+              }%
+              c[id=I00027]{%
+                sex=neuter,
+                name=\pref{Hugo} \surn{Weasley},
+                birth={}{},
+                death={}{},
+              }%
+            }%
+            child[id=F00007]{%
+              g[id=I00020]{%
+                sex=male,
+                name=\pref{George} \surn{Weasley},
+                birth={}{},
+                death={}{},
+              }%
+              c[id=I00028]{%
+                sex=male,
+                name=\pref{Fred} \surn{Weasley},
+                birth={}{},
+                death={}{},
+              }%
+            }%
+            c[id=I00021]{%
+              sex=male,
+              name=\pref{Fred} \surn{Weasley},
+              birth={}{},
+              death={}{},
+            }%
+            c[id=I00022]{%
+              sex=male,
+              name=\pref{Percy} \surn{Weasley},
+              birth={}{},
+              death={}{},
+            }%
+            c[id=I00023]{%
+              sex=male,
+              name=\pref{Charles} \surn{Weasley},
+              birth={}{},
+              death={}{},
+            }%
+            child[id=F00007]{%
+              g[id=I00024]{%
+                sex=male,
+                name=\pref{William} \surn{Weasley},
+                birth={}{},
+                death={}{},
+              }%
+              p[id=I00029]{%
+                sex=female,
+                name=\pref{Fleur} \surn{Delacour},
+                birth={}{},
+                death={}{},
+              }%
+              c[id=I00030]{%
+                sex=female,
+                name=\pref{Victoire} \surn{Weasley},
+                birth={}{},
+                death={}{},
+              }%
+              c[id=I00031]{%
+                sex=neuter,
+                name=\pref{Other Children} \surn{Weasley},
+                birth={}{},
+                death={}{},
+              }%
+            }%
+          }%
+          c[id=I00113]{%
+            sex=male,
+            name=\pref{Bilius} \surn{Weasley},
+            birth={}{},
+            death={}{},
+          }%
+        }%
+        child[id=F00020]{%
+          g[id=I00051]{%
+            sex=female,
+            name=\pref{Callidora} \surn{Black},
+            birth={1915}{},
+            death={}{},
+          }%
+          p[id=I00057]{%
+            sex=male,
+            name=\pref{Harfang} \surn{Longbottom},
+            birth={}{},
+            death={}{},
+          }%
+          c[id=I00058]{%
+            sex=male,
+            name=\pref{Male} \surn{Longbottom},
+            birth={}{},
+            death={}{},
+          }%
+          c[id=I00059]{%
+            sex=female,
+            name=\pref{Female} \surn{Longbottom},
+            birth={}{},
+            death={}{},
+          }%
+        }%
+        child[id=F00020]{%
+          g[id=I00052]{%
+            sex=female,
+            name=\pref{Charis} \surn{Black},
+            birth={1919}{},
+            death={1973}{},
+          }%
+          p[id=I00053]{%
+            sex=male,
+            name=\pref{Caspar} \surn{Crouch},
+            birth={}{},
+            death={}{},
+          }%
+          c[id=I00054]{%
+            sex=female,
+            name=\pref{Mollie} \surn{Crouch},
+            birth={}{},
+            death={}{},
+          }%
+          c[id=I00055]{%
+            sex=female,
+            name=\pref{Female} \surn{Crouch},
+            birth={}{},
+            death={}{},
+          }%
+          c[id=I00056]{%
+            sex=female,
+            name=\pref{Female} \surn{Crouch},
+            birth={}{},
+            death={}{},
+          }%
+        }%
+      }%
+      child[id=F00023]{%
+        g[id=I00061]{%
+          sex=female,
+          name=\pref{Belvina} \surn{Black},
+          birth={1886}{},
+          death={1962}{},
+        }%
+        p[id=I00065]{%
+          sex=male,
+          name=\pref{Herbert} \surn{Burke},
+          birth={}{},
+          death={}{},
+        }%
+        c[id=I00066]{%
+          sex=male,
+          name=\pref{Male} \surn{Burke},
+          birth={}{},
+          death={}{},
+        }%
+        c[id=I00067]{%
+          sex=female,
+          name=\pref{Male} \surn{Burke},
+          birth={}{},
+          death={}{},
+        }%
+        c[id=I00068]{%
+          sex=female,
+          name=\pref{Female} \surn{Burke},
+          birth={}{},
+          death={}{},
+        }%
+      }%
+      child[id=F00023]{%
+        g[id=I00062]{%
+          sex=male,
+          name=\pref{Cygnus} \surn{Black},
+          birth={1889}{},
+          death={1943}{},
+        }%
+        p[id=I00069]{%
+          sex=female,
+          name=\pref{Violetta} \surn{Bulstrode},
+          birth={}{},
+          death={}{},
+        }%
+        child[id=F00025]{%
+          g[id=I00076]{%
+            sex=male,
+            name=\pref{Pollux} \surn{Black},
+            birth={1912}{},
+            death={1990}{},
+          }%
+          p[id=I00080]{%
+            sex=female,
+            name=\pref{Irma} \surn{Crabbe},
+            birth={}{},
+            death={}{},
+          }%
+          child[id=F00027]{%
+            g[id=I00083]{%
+              sex=female,
+              name=\pref{Walburga} \surn{Black},
+              birth={1925}{},
+              death={1985}{},
+            }%
+            p[id=I00093]{%
+              sex=male,
+              name=\pref{Orion} \surn{Black},
+              birth={1929}{},
+              death={1979}{},
+            }%
+            c[id=I00094]{%
+              sex=male,
+              name=\pref{Sirius} \surn{Black},
+              birth={}{},
+              death={}{},
+            }%
+            c[id=I00095]{%
+              sex=male,
+              name=\pref{Regulus} \surn{Black},
+              birth={1961}{},
+              death={1979}{},
+            }%
+          }%
+          c[id=I00084]{%
+            sex=male,
+            name=\pref{Alphard} \surn{Black},
+            birth={}{},
+            death={}{},
+          }%
+          child[id=F00027]{%
+            g[id=I00085]{%
+              sex=male,
+              name=\pref{Cygnus} \surn{Black},
+              birth={1929}{},
+              death={1979}{},
+            }%
+            p[id=I00086]{%
+              sex=female,
+              name=\pref{Druella} \surn{Rosier},
+              birth={}{},
+              death={}{},
+            }%
+            c[id=I00097]{%
+              sex=female,
+              name=\pref{Bellatrix} \surn{Black},
+              birth={1951}{},
+              death={1998}{},
+            }%
+            child[id=F00029]{%
+              g[id=I00098]{%
+                sex=female,
+                name=\pref{Andromeda} \surn{Black},
+                birth={}{},
+                death={}{},
+              }%
+              p[id=I00104]{%
+                sex=male,
+                name=\pref{Ted} \surn{Tonks},
+                birth={}{},
+                death={}{},
+              }%
+              child[id=F00037]{%
+                g[id=I00105]{%
+                  sex=female,
+                  name=\pref{Nymphadora} \surn{Tonks},
+                  birth={}{},
+                  death={}{},
+                }%
+                p[id=I00106]{%
+                  sex=male,
+                  name=\pref{Remus} \surn{Lupin},
+                  birth={}{},
+                  death={}{},
+                }%
+                c[id=I00107]{%
+                  sex=male,
+                  name=\pref{Ted} \surn{Lupin},
+                  birth={}{},
+                  death={}{},
+                }%
+              }%
+            }%
+            child[id=F00029]{%
+              g[id=I00099]{%
+                sex=female,
+                name=\pref{Narcissa} \surn{Black},
+                birth={1955}{},
+                death={}{},
+              }%
+              p[id=I00100]{%
+                sex=male,
+                name=\pref{Lucius} \surn{Malfoy},
+                birth={}{},
+                death={}{},
+              }%
+              child[id=F00034]{%
+                g[id=I00101]{%
+                  sex=male,
+                  name=\pref{Draco} \surn{Malfoy},
+                  birth={1980}{},
+                  death={}{},
+                }%
+                c[id=I00102]{%
+                  sex=male,
+                  name=\pref{Scorpius} \surn{Malfoy},
+                  birth={}{},
+                  death={}{},
+                }%
+              }%
+            }%
+          }%
+        }%
+        c[id=I00077]{%
+          sex=female,
+          name=\pref{Cassiopeia} \surn{Black},
+          birth={1915}{},
+          death={1992}{},
+        }%
+        c[id=I00078]{%
+          sex=neuter,
+          name=\pref{Marius} \surn{Black},
+          birth={}{},
+          death={}{},
+        }%
+        child[id=F00025]{%
+          g[id=I00079]{%
+            sex=female,
+            name=\pref{Dorea} \surn{Black},
+            birth={1920}{},
+            death={1977}{},
+          }%
+          p[id=I00081]{%
+            sex=male,
+            name=\pref{Charlus} \surn{Potter},
+            birth={}{},
+            death={}{},
+          }%
+          c[id=I00082]{%
+            sex=male,
+            name=\pref{Male} \surn{Potter},
+            birth={}{},
+            death={}{},
+          }%
+        }%
+      }%
+      c[id=I00063]{%
+        sex=male,
+        name=\pref{Phineas} \surn{Black},
+        birth={}{},
+        death={}{},
+      }%
+      child[id=F00023]{%
+        g[id=I00064]{%
+          sex=male,
+          name=\pref{Sirius} \surn{Black},
+          birth={1877}{},
+          death={1952}{},
+        }%
+        p[id=I00087]{%
+          sex=female,
+          name=\pref{Hesper} \surn{Gamp},
+          birth={}{},
+          death={}{},
+        }%
+        child[id=F00030]{%
+          g[id=I00088]{%
+            sex=male,
+            name=\pref{Arcturus} \surn{Black},
+            birth={1901}{},
+            death={1991}{},
+          }%
+          p[id=I00091]{%
+            sex=female,
+            name=\pref{Melania} \surn{Macmillan},
+            birth={}{},
+            death={}{},
+          }%
+          c[id=I00092]{%
+            sex=female,
+            name=\pref{Lucretia} \surn{Black},
+            birth={1925}{},
+            death={1992}{},
+          }%
+          child[id=F00031]{%
+            g[id=I00093]{%
+              sex=male,
+              name=\pref{Orion} \surn{Black},
+              birth={1929}{},
+              death={1979}{},
+            }%
+            p[id=I00083]{%
+              sex=female,
+              name=\pref{Walburga} \surn{Black},
+              birth={1925}{},
+              death={1985}{},
+            }%
+            c[id=I00094]{%
+              sex=male,
+              name=\pref{Sirius} \surn{Black},
+              birth={}{},
+              death={}{},
+            }%
+            c[id=I00095]{%
+              sex=male,
+              name=\pref{Regulus} \surn{Black},
+              birth={1961}{},
+              death={1979}{},
+            }%
+          }%
+        }%
+        c[id=I00089]{%
+          sex=female,
+          name=\pref{Lycoris} \surn{Black},
+          birth={1904}{},
+          death={1965}{},
+        }%
+        c[id=I00090]{%
+          sex=male,
+          name=\pref{Regulus} \surn{Black},
+          birth={1906}{},
+          death={1959}{},
+        }%
+      }%
+    }%
+    c[id=I00072]{%
+      sex=female,
+      name=\pref{Isla} \surn{Black},
+      birth={}{},
+      death={}{},
+    }%
+    c[id=I00073]{%
+      sex=male,
+      name=\pref{Bob} \surn{Hitchens},
+      birth={}{},
+      death={}{},
+    }%
+    c[id=I00074]{%
+      sex=female,
+      name=\pref{Elladora} \surn{Black},
+      birth={1850}{},
+      death={1931}{},
+    }%
+    c[id=I00075]{%
+      sex=male,
+      name=\pref{Sirius} \surn{Black},
+      birth={1843}{},
+      death={1853}{},
+    }%
+  }%
+}%

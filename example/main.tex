@@ -1,0 +1,20 @@
+\documentclass[]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[all]{genealogytree}
+\usepackage{incgraph}
+
+\begin{document}
+  \begin{inctext}
+    \begin{tikzpicture}
+
+      \genealogytreeinput[
+        template=database traditional,
+      ]{db-black.graph}
+
+      \path
+        ([xshift=-1cm,yshift=-1.16cm]current bounding box.south west)
+          rectangle ([xshift=1.16cm,yshift=1cm]current bounding box.north east);
+    \end{tikzpicture}
+  \end{inctext}
+\end{document}
