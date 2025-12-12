@@ -118,9 +118,10 @@
    the concept of a surname, family name, or the like."
   [person]
   (or (get-in person ["NAME" 0 "GIVN"  0 :data])
-      (->> (get-in person ["NAME" 0 :data])
-           (re-find #"(^.*)(?:\s\/.*\/$)")
-           second)))
+      (when-let [name-data (get-in person ["NAME" 0 :data])]
+        (->> name-data
+             (re-find #"(^.*)(?:\s\/.*\/$)")
+             second))))
 
 (defn surname
   "The character U+002F (/, slash or solidus) has special meaning in a personal
@@ -128,9 +129,10 @@
    the concept of a surname, family name, or the like."
   [person]
   (or (get-in person ["NAME" 0 "SURN"  0 :data])
-      (->> (get-in person ["NAME" 0 :data])
-           (re-find #"\/(.*)\/$")
-           second)))
+      (when-let [name-data (get-in person ["NAME" 0 :data])]
+        (->> name-data
+             (re-find #"\/(.*)\/$")
+             second))))
 
 (defn birth-date [person]
   (get-in person ["BIRT" 0 "DATE" 0 :data]))
@@ -180,3 +182,8 @@
     (->> [(husband g fam) (wife g fam)]
          (filter some?)
          (into []))))
+
+(defn siblings [g person]
+  (when-let [fam (family g (get-in person ["FAMC" 0 :data 1]))]
+    (->> (family-children g fam)
+         (filter #(not= % person)))))

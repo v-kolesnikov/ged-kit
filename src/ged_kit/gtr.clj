@@ -23,6 +23,9 @@
 (defn ^:private indent+ [n]
   (indent (inc n)))
 
+(defn ^:private wrap-brackets [s]
+  (str "(" s ")"))
+
 (defn ^:private wrap-curly [s]
   (str "{" s "}"))
 
@@ -54,24 +57,28 @@
           (indent lvl) "}%"))))
 
 (defn ^:private parse-date [s]
-  (LocalDate/parse s (DateTimeFormatter/ofPattern "yyyyMMMdd")))
+  (LocalDate/parse s (DateTimeFormatter/ofPattern "yMMMd")))
 
-(def ^:private gtr-calendar
-  {"JULIAN" "JU"
-   "GREGORIAN" "GR"})
+(defn ^:private gtr-calendar [c]
+  (or (get {"JULIAN" "JU"
+            "GREGORIAN" "GR"} c)
+      c))
 
-(defn gtr-date [date]
+(defn gtr-date
+  "NOTE: `(caBC)` dates not supported yet."
+  [date]
   (match date
     [:date [:year y]] (str y)
-    [:date [:month m] [:year y]] (str (YearMonth/from (parse-date (str y m "01"))))
-    [:date [:day d] [:month m] [:year y]] (str (parse-date (str y m (format "%02d" d))))
-    [:date [:calendar c] & d] (str "(" (get gtr-calendar c) ")" (gtr-date (into [:date] d)))
-    [:dateApprox "ABT" d] (str "(ca)" (gtr-date d))
-    [:dateApprox "CAL" d] (str "(ca)" (gtr-date d))
-    [:dateApprox "EST" d] (str "(ca)" (gtr-date d))
+    [:date [:month m] [:year y]] (str (YearMonth/from (parse-date (str y m 1))))
+    [:date [:day d] [:month m] [:year y]] (str (parse-date (str y m d)))
+    [:date [:calendar c] & d] (str "(" (gtr-calendar c) ")" (gtr-date (into [:date] d)))
+    [:dateApprox (:or "ABT" "CAL" "EST") d] (str "(ca)" (gtr-date d))
     [:dateRange "AFT" d] (str (gtr-date d) "/")
     [:dateRange "BEF" d] (str "/" (gtr-date d))
     [:dateRange "BET" d1 "AND" d2] (str (gtr-date d1) "/" (gtr-date d2))
+    [:date y [:epoch "BCE"]] (str "(BC)" (gtr-date [:date y]))
+    [:date m y [:epoch "BCE"]] (str "(BC)" (gtr-date [:date m y]))
+    [:date d m y [:epoch "BCE"]] (str "(BC)" (gtr-date [:date d m y]))
     :else ""))
 
 (defn node
@@ -124,17 +131,19 @@
   ([person options] (node person :p options)))
 
 (defn parent-node
-  ([g person] (parent-node g person []))
-  ([g person options]
-   (when-let [parentes (ged/parentes g person)]
-     (map (fn [spouse]
-            (if (empty? (ged/parentes g spouse))
-              (p-node spouse)
-              {:node :parent
-               :options options
-               :content (into [(g-node spouse)]
-                              (parent-node g spouse))}))
-          parentes))))
+  [g person & opts]
+  (let [{:keys [options
+                ancestor-siblings]} opts]
+    (map (fn [spouse]
+           (if (empty? (ged/parentes g spouse))
+             (p-node spouse)
+             {:node :parent
+              :options options
+              :content (into [] (concat [(g-node spouse)]
+                                        (when ancestor-siblings
+                                          (map c-node (ged/siblings g spouse)))
+                                        (apply parent-node g spouse opts)))}))
+         (ged/parentes g person))))
 
 (defn child-node
   ([g person] (child-node g person []))
@@ -161,12 +170,17 @@
   "Create GTR structure of sand clock diagram.
 
    The structure is a hash-map like:
-   `{:node :sandclok :options [] :content [<nodes>]}`"
-  ([g id] (sandclock g id []))
-  ([g id options]
-   (let [person (ged/indi g id)
-         [{fam-id :id}] (ged/families g person)]
-     {:node :sandclock
-      :options options
-      :content (into [(child-node g person [[:id fam-id]])]
-                     (parent-node g person))})))
+   `{:node :sandclok :options [] :content [<nodes>]}`
+
+   Params are: `g` — GED graph, `id` — proband ID.
+   Options are `:siblings`, `:ancestor-siblings`."
+  [g id & opts]
+  (let [{:keys [options siblings]} opts
+        proband (ged/indi g id)
+        [{fam-id :id}] (ged/families g proband)]
+    {:node :sandclock
+     :options options
+     :content (into [] (concat [(child-node g proband [[:id fam-id]])]
+                               (when siblings
+                                 (map c-node (ged/siblings g proband)))
+                               (apply parent-node g proband opts)))}))

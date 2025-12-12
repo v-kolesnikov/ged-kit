@@ -6,13 +6,17 @@
   (testing "GTR dates"
     (are [input expected] (= expected (gtr/gtr-date input))
       [:date [:year 2025]] "2025"
+      [:date [:year 225]] "225"
       [:date [:month "Dec"] [:year 2025]] "2025-12"
-      [:date [:day  9] [:month "Dec"] [:year 2025]] "2025-12-09"
+      [:date [:day 9] [:month "Dec"] [:year 2025]] "2025-12-09"
       [:date [:day 10] [:month "Dec"] [:year 2025]] "2025-12-10"
+      [:date [:day 18] [:month "Nov"] [:year 163] [:epoch "BCE"]] "(BC)0163-11-18"
+      [:date [:month "Nov"] [:year 163] [:epoch "BCE"]] "(BC)0163-11"
       [:date [:calendar "JULIAN"] [:day 25] [:month "Aug"] [:year 1789]] "(JU)1789-08-25"
       [:dateApprox "ABT" [:date [:day 9] [:month "Dec"] [:year 2025]]] "(ca)2025-12-09"
       [:dateApprox "CAL" [:date [:day 9] [:month "Dec"] [:year 2025]]] "(ca)2025-12-09"
       [:dateApprox "EST" [:date [:day 9] [:month "Dec"] [:year 2025]]] "(ca)2025-12-09"
+      [:dateApprox "EST" [:date [:day 9] [:month "Dec"] [:year 2025] [:epoch "BCE"]]] "(ca)(BC)2025-12-09"
       [:dateRange "AFT" [:date [:day 9] [:month "Dec"] [:year 2025]]] "2025-12-09/"
       [:dateRange "BEF" [:date [:day 9] [:month "Dec"] [:year 2025]]] "/2025-12-09"
       [:dateRange
