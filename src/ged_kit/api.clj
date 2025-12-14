@@ -53,6 +53,30 @@
        (insta/parse parser)
        (insta/transform mapping)))
 
+(def ^:private x-grammar
+  "<line> = level <SP> [id <SP>] tag [<SP> data] [<CR / CRLF / LF>]
+
+   level = #'(\\d+)'
+   id = <'@'> #'[A-Z0-9_]+' <'@'>
+   tag = #'[A-Z][A-Z0-9_]*|_[A-Z0-9_]+'
+   data = id / lineStr
+
+   lineStr = (#'[^@]' / <'@'> '@' / '@#') *nonEOL
+   <nonEOL> = %x09 / %x20-10FFFF")
+
+(def x-parser
+  (insta/parser x-grammar
+                :input-format :abnf
+                :string-ci false
+                :no-slurp true))
+
+(defn x-parse [in]
+  (->> in
+       (insta/parse x-parser)
+       (insta/transform {:level (fn [v] [:level (Integer/parseInt v)])
+                         :lineStr str})
+       (into {})))
+
 (defn concatenate
   "Squashes `CONT` and `CONC` lines"
   [lines]
@@ -91,7 +115,9 @@
              (record-seq tail)))
      (take 1 lines))))
 
-(defn turn-db [records]
+(defn ^:private graph-db
+  "Turn list of records to a simple hash-map database."
+  [records]
   (reduce (fn [h record]
             (assoc h (or (:id record) (:tag record))
                    record)) {}
@@ -100,10 +126,10 @@
 (defn parse-io [path]
   (->> (slurp path)
        (string/split-lines)
-       (map parse)
+       (map x-parse)
        concatenate
        record-seq
-       turn-db))
+       graph-db))
 
 ;;
 ;; Helper functions
