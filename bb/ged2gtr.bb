@@ -15,8 +15,14 @@
                :coerce :boolean}
     :ancestor-siblings {:desc "Whether to show the siblings of the target person's ancestors"
                         :coerce :boolean}
+    :ancestos {:desc "Number of ancestor generations to graph"
+               :alias :a
+               :coerce :long}
+    :descendants {:desc "Number of descendant generations to graph"
+                  :alias :d
+                  :coerce :long}
     :banner {:desc "Whether to show the banner above the graph"
-            :coerce :boolean}
+             :coerce :boolean}
     :verbose {:desc "Detailed logging for debug"
               :alias :v}
     :help {:alias :h
@@ -54,7 +60,9 @@
 
 (def sandclock-opts
   [:siblings
-   :ancestor-siblings])
+   :ancestor-siblings
+   :ancestors
+   :descendants])
 
 (defn -main [args]
   (let [opts (cli/parse-opts args cli-spec)]
@@ -64,7 +72,7 @@
       (println (show-help cli-spec))
       (System/exit 0))
     (let [g (ged/parse-io (:input opts))
-          result (gtr/gtr-string (gtr/sandclock g (:xref opts)
+          result (gtr/gtr-string (gtr/sandclock g (:xref opts) []
                                                 (select-keys opts sandclock-opts)))]
       (when (:banner opts)
         (show-banner opts))

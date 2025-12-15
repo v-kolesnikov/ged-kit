@@ -1,8 +1,9 @@
 (ns ged-kit.gtr-test
-  (:require [clojure.test :as t :refer [deftest are testing]]
-            [ged-kit.gtr :as gtr]))
+  (:require [clojure.test :as t :refer [deftest are is testing use-fixtures]]
+            [ged-kit.gtr :as gtr]
+            [ged-kit.api :as ged]))
 
-(deftest gtr-datr-test
+(deftest gtr-date-test
   (testing "GTR dates"
     (are [input expected] (= expected (gtr/gtr-date input))
       [:date [:year 2025]] "2025"
@@ -22,3 +23,42 @@
       [:dateRange
        "BET" [:date [:day 10] [:month "Dec"] [:year 2025]]
        "AND" [:date [:day 20] [:month "Dec"] [:year 2025]]] "2025-12-10/2025-12-20")))
+
+(def graph
+  {"I42" {:id "I42"
+          "SEX"  [{:data "M"}]
+          "OCCU" [{:data "Major"}]}})
+
+(use-fixtures :once graph)
+
+(deftest sandclock-test
+  (testing "sandclock"
+    (is (= {:node :sandclock,
+            :options nil,
+            :content
+            [{:node :child,
+              :options [[:id nil]],
+              :content
+              [{:node :g,
+                :options [[:id "I42"]],
+                :content {:sex "male",
+                          :name "\\pref{} \\surn{}",
+                          :birth "{}{}",
+                          :death "{}{}",
+                          :profession "Major"}}]}]}
+           (gtr/sandclock graph "I42")))))
+
+(deftest gtr-string-test
+  (testing "GTR string"
+    (is (= "sandclock[]{%
+  child[id=]{%
+    g[id=I42]{%
+      sex=male,
+      name=\\pref{} \\surn{},
+      birth={}{},
+      death={}{},
+      profession=Major,
+    }%
+  }%
+}%"
+           (gtr/gtr-string (gtr/sandclock graph "I42"))))))
