@@ -54,15 +54,14 @@
        (insta/transform mapping)))
 
 (def ^:private x-grammar
-  "<line> = level <SP> [id <SP>] tag [<SP> data] [<CR / CRLF / LF>]
+  "<line> = level <SP> [id <SP>] tag [<SP> data]
 
    level = #'(\\d+)'
    id = <'@'> #'[A-Z0-9_]+' <'@'>
    tag = #'[A-Z][A-Z0-9_]*|_[A-Z0-9_]+'
    data = id / lineStr
 
-   lineStr = (#'[^@]' / <'@'> '@' / '@#') *nonEOL
-   <nonEOL> = %x09 / %x20-10FFFF")
+   lineStr = #'([^@]|@[@#]).*'")
 
 (def x-parser
   (insta/parser x-grammar
@@ -74,7 +73,7 @@
   (->> in
        (insta/parse x-parser)
        (insta/transform {:level (fn [v] [:level (Integer/parseInt v)])
-                         :lineStr str})
+                         :lineStr (fn [s] (string/replace-first (str s) #"^@@" "@"))})
        (into {})))
 
 (defn concatenate
