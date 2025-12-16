@@ -41,7 +41,7 @@
          opts-pairs (->> options
                          (map (fn [[k v]] (str (name k) "=" v)))
                          (string/join ", "))
-         cont-pairs (if (#{:g :c :p} node)
+         body-pairs (if (#{:g :c :p} node)
                       (->> content
                            (filter (comp some? second))
                            (map (fn [[k v]] (str (indent+ lvl) (name k) "=" (escape v) ",")))
@@ -50,7 +50,7 @@
                            (map #(gtr-string % (inc lvl)))
                            (string/join "\n")))]
      (str (indent lvl) (name node) (wrap-square opts-pairs) "{%\n"
-          cont-pairs "\n"
+          body-pairs "\n"
           (indent lvl) "}%"))))
 
 (defn ^:private parse-date [s]

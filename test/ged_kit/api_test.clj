@@ -1,7 +1,6 @@
 (ns ged-kit.api-test
   (:require [clojure.test :as t :refer [deftest is are testing]]
-            [ged-kit.api :as ged]
-            [clojure.string :as string]))
+            [ged-kit.api :as ged]))
 
 (deftest parse-test
   (testing "GEDCOM lines"
@@ -16,8 +15,7 @@
       "10 HUSB @I1@" {:level 10 :tag "HUSB" :data [:id "I1"]}
       "2 DATE @#DJULIAN@ 2 AUG 1790" {:level 2, :tag "DATE", :data "@#DJULIAN@ 2 AUG 1790"}))
   (testing "escaping"
-    (are [input expected] (= expected
-                             (ged/x-parse input))
+    (are [input expected] (= expected (ged/x-parse input))
       "3 NOTE @@I42@" {:level 3 :tag "NOTE" :data "@I42@"}
       "3 NOTE example @" {:level 3 :tag "NOTE" :data "example @"}
       "3 NOTE @@example.com" {:level 3 :tag "NOTE" :data "@example.com"})))
@@ -38,20 +36,21 @@
              {:level 3, :tag "CONC", :data "f note"}
              {:level 1, :tag "FAMC", :data [:id "F248"]}])))))
 
-(deftest record-seq-test
-  (testing "record-seq"
-    (is (= '({:id "I1",
-              :tag "INDI",
-              "BIRT"
-              [{:tag "BIRT",
-                "NOTE" [{:tag "NOTE", :data "The first line of note\n\nThird line of note"}]}]})
-           (->> (str "0 @I1@ INDI\n"
-                     "1 BIRT\n"
-                     "2 NOTE The first line of note\n"
-                     "3 CONT\n"
-                     "3 CONT Third line o\n"
-                     "3 CONC f note\n")
-                (string/split-lines)
-                (map ged/parse)
-                (ged/concatenate)
-                (ged/record-seq))))))
+(deftest parse-str-test
+  (testing "parse-str"
+    (are [input expected] (= expected (ged/parse-str input))
+      (str "0 @I1@ INDI\n"
+           "1 BIRT\n"
+           "2 NOTE The first line of note\n"
+           "3 CONT\n"
+           "3 CONT Third line o\n"
+           "3 CONC f note\n")
+      {"I1" {:id "I1",
+             :level 0,
+             :tag "INDI",
+             :BIRT
+             [{:tag "BIRT",
+               :level 1,
+               :NOTE [{:level 2,
+                       :tag "NOTE",
+                       :data "The first line of note\n\nThird line of note"}]}]}})))

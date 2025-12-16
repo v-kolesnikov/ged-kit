@@ -54,6 +54,9 @@
        (insta/transform mapping)))
 
 (def ^:private x-grammar
+  "NOTE: it supports GEDCOM v5.x escape strings: `@#DJULIAN@`.
+   In all the rest cases it is GEDCOM v7.x grammar."
+
   "<line> = level <SP> [id <SP>] tag [<SP> data]
 
    level = #'(\\d+)'
@@ -99,10 +102,10 @@
     (if (and line (level< parent line))
       (let [tail (drop-while (partial level< line) (rest lines))]
         (assoc-lines
-         (update-in parent [(:tag line)] (fnil conj [])
+         (update-in parent [(keyword (get line :tag))] (fnil conj [])
                     (assoc-lines line (rest lines)))
          tail))
-      (dissoc parent :level))))
+      parent)))
 
 (defn record-seq
   "Sequence of GEDCOM records"
@@ -122,13 +125,15 @@
                    record)) {}
           records))
 
-(defn parse-io [path]
-  (->> (slurp path)
-       (string/split-lines)
+(defn parse-str [str]
+  (->> (string/split-lines str)
        (map x-parse)
        concatenate
        record-seq
        graph-db))
+
+(defn parse-io [path]
+  (parse-str (slurp path)))
 
 ;;
 ;; Helper functions
