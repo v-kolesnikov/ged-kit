@@ -59,9 +59,9 @@
       {"I1" {:id "I1",
              :level 0,
              :tag "INDI",
-             :BIRT
+             "BIRT"
              [{:tag "BIRT",
                :level 1,
-               :NOTE [{:level 2,
+               "NOTE" [{:level 2,
                        :tag "NOTE",
                        :data "The first line of note\n\nThird line of note"}]}]}})))

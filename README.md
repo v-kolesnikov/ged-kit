@@ -109,9 +109,9 @@ or the entire record:
 (def person {:level 0
              :id "I42"
              :tag "INDI"
-             :NOTE [{:level 1
-                     :tag "NOTE"
-                     :data "The first line of note\n\nThird line of note"}]})
+             "NOTE" [{:level 1
+                      :tag "NOTE"
+                      :data "The first line of note\n\nThird line of note"}]})
 
 (ged/render-record person)
 ;; => "0 @I42@ INDI\n1 NOTE The first line of note\n2 CONT\n2 CONT Third line of note"

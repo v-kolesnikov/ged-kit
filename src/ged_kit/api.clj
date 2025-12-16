@@ -102,7 +102,7 @@
     (if (and line (level< parent line))
       (let [tail (drop-while (partial level< line) (rest lines))]
         (assoc-lines
-         (update-in parent [(keyword (get line :tag))] (fnil conj [])
+         (update-in parent [(get line :tag)] (fnil conj [])
                     (assoc-lines line (rest lines)))
          tail))
       parent)))
