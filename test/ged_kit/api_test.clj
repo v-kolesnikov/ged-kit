@@ -20,6 +20,17 @@
       "3 NOTE example @" {:level 3 :tag "NOTE" :data "example @"}
       "3 NOTE @@example.com" {:level 3 :tag "NOTE" :data "@example.com"})))
 
+(deftest render-line-test
+  (testing "Render GEDCOM lines"
+    (are [expected input] (= expected (ged/render-line input))
+      "1 @I1@ INDI" {:level 1 :id "I1" :tag "INDI"}
+      "1 NAME John /Doe/" {:level 1 :tag "NAME" :data "John /Doe/"}
+      "2 DATE 1 JAN 1900" {:level 2 :tag "DATE" :data "1 JAN 1900"}
+      "2 PLAC Someplace, Somecity" {:level 2 :tag "PLAC" :data "Someplace, Somecity"}
+      "0 @F1@ FAM" {:level 0 :id "F1" :tag "FAM"}
+      "10 HUSB @I1@" {:level 10 :tag "HUSB" :data [:id "I1"]}
+      "2 DATE @#DJULIAN@ 2 AUG 1790" {:level 2 :tag "DATE" :data "@#DJULIAN@ 2 AUG 1790"}
+      "1 NOTE Line one\n2 CONT\n2 CONT Line two" {:level 1 :tag "NOTE" :data "Line one\n\nLine two"})))
 
 (deftest concatenate-test
   (testing "concatenate"

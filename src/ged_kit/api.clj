@@ -135,6 +135,42 @@
 (defn parse-io [path]
   (parse-str (slurp path)))
 
+(defn wrap-at [s]
+  (str "@" s "@"))
+
+(defn render-line
+  "Takes a single GEDCOM line and returns its string representation.\n
+   The output string could be multi-lined, e.g. in case of multi-lined
+   data in input string. In that case the input data split by `\\n` or
+   `\\r\\n` and concatenated with `CONT` tag."
+  [{:keys [level id tag data]}]
+  (let [id (when (some? id)
+             (wrap-at id))
+        data (if (vector? data)
+               (wrap-at (second data))
+               (when data
+                 (let [[head & cont-lines] (string/split-lines data)]
+                   (loop [[line & tail] cont-lines
+                          result [head]]
+                     (if line
+                       (recur tail
+                              (conj result
+                                    (str (inc level) \space "CONT" (when-not (empty? line) \space) line)))
+                       (string/join "\n" result))))))]
+    (->> [level id tag data]
+         (filter some?)
+         (string/join \space))))
+
+(defn render-record
+  "Takes a single GEDCOM record and returns its string represenatation."
+  [record]
+  (->> (dissoc record :level :id :tag :data)
+       vals
+       flatten
+       (map render-record)
+       (cons (render-line record))
+       (string/join "\n")))
+
 ;;
 ;; Helper functions
 ;;

@@ -10,12 +10,16 @@ The whole project is pure Clojure implementation with minimal dependencies and B
 **Table of content**
 
 - [ged-kit.api](#ged-kitapi)
+  - [Reading GEDCOM](#reading-gedcom)
+  - [Writing GEDCOM](#writing-gedcom)
 - [ged-kit.date](#ged-kitdate)
 - [ged-kit.gtr](#ged-kitgtr)
 - [Babashka CLI](#babashka-cli)
 
 
 ## ged-kit.api
+
+### Reading GEDCOM
 
 The module `ged-kit.api` turns UTF-8 [GEDCOM](https://gedcom.io/specifications/FamilySearchGEDCOMv7.html) data to abstract syntax tree (AST):
 
@@ -82,6 +86,41 @@ The last step is turning a list of lines to sequence of records:
 
 Finally it is a sequence that has a single record contais the entire data of the individual.
 The next steps left to your imagination.
+
+
+### Writing GEDCOM
+
+Another feature that `ged-kit.api` provided is writing data back to GEDCOM text representation.
+
+For example to turn a single parsed line back to string:
+
+```clj
+(require '[ged-kit.api :as ged])
+
+(ged/render-line {:level 1, :tag "NOTE", :data "The first line of note\n\nThird line of note"})
+;; => "1 NOTE The first line of note\n2 CONT\n2 CONT Third line of note"
+```
+
+or the entire record:
+
+```clj
+(require '[ged-kit.api :as ged])
+
+(def person {:level 0
+             :id "I42"
+             :tag "INDI"
+             :NOTE {:level 1
+                    :tag "NOTE"
+                    :data "The first line of note\n2 CONT\n2 CONT Third line of note"}})
+
+(ged/render-line person)
+;; => "0 @I42@ INDI"
+
+(ged/render-record person)
+;; => "0 @I42@ INDI\n1 NOTE The first line of note\n2 CONT 2 CONT\n2 CONT 2 CONT Third line of note"
+```
+
+Note that value of `:id` is automatically escaped with `@` symbols. The same escaping applies to `:data` key in case it has a pointer, so `{:level 1 tag: "HUSB" :data [:id "I42"]}` will render as `1 HUSB @I42@`.
 
 
 ## ged-kit.date
