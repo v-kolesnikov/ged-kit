@@ -138,25 +138,23 @@
 
    Arguments: `g` — graph, `person` — proband, `options` - node options:
    `parent[<options>]{}`, `opts` — GTR graph options."
-  ([g person options]
-   (parent-node g person options {}))
-  ([g person options opts]
-   (let [{:keys [ancestor-siblings
-                 ancestors]} opts]
-     (when (or (nil? ancestors)
-               (pos? ancestors))
-       (map (fn [spouse]
-              (if (empty? (ged/parentes g spouse))
-                (p-node spouse)
-                {:node :parent
-                 :options options
-                 :content (into [] (concat [(g-node spouse)]
-                                           (when ancestor-siblings
-                                             (map c-node (ged/siblings g spouse)))
-                                           (parent-node g spouse []
-                                                        (update-in opts [:ancestors]
-                                                                   #(when (some? %) (dec %))))))}))
-            (ged/parentes g person))))))
+  [g person options & {:keys [ancestor-siblings
+                              ancestors]
+                       :as opts}]
+  (when (or (nil? ancestors)
+            (pos? ancestors))
+    (map (fn [spouse]
+           (if (empty? (ged/parentes g spouse))
+             (p-node spouse)
+             {:node :parent
+              :options options
+              :content (into [] (concat [(g-node spouse)]
+                                        (when ancestor-siblings
+                                          (map c-node (ged/siblings g spouse)))
+                                        (parent-node g spouse []
+                                                     (update-in opts [:ancestors]
+                                                                #(when (some? %) (dec %))))))}))
+         (ged/parentes g person))))
 
 (defn child-node
   "Subgraph `child`. A child subgraph is a family where the g node acts as
@@ -165,32 +163,29 @@
 
    Arguments: `g` — graph, `person` — proband, `options` - node options:
    `child[<options>]{}`, `opts` — GTR graph options."
-  ([g person options]
-   (child-node g person options {}))
-  ([g person options opts]
-   (let [{:keys [descendants]} opts]
-     (when (or (nil? descendants)
-               (pos? descendants))
-       (let [[head-fam & rest-fams]
-             (map (fn [{id :id :as fam}]
-                    (let [children (->> (ged/family-children g fam)
-                                        (map (fn [child]
-                                               (if (empty? (ged/children g child))
-                                                 (c-node child)
-                                                 (child-node g child [[:id id]]
-                                                             (update-in opts [:descendants]
-                                                                        #(when (some? %) (dec %)))))))
-                                        (filter some?))]
-                      (if-let [spouse (ged/spouse g fam person)]
-                        (into [(-> (p-node spouse)
-                                   (add-marriage fam))]
-                              children)
-                        children)))
-                  (ged/families g person))]
-         {:node :child
-          :options options
-          :content (into [(g-node person)]
-                         (into head-fam (map wrap-union rest-fams)))})))))
+  [g person options & {:keys [descendants] :as opts}]
+  (when (or (nil? descendants)
+            (pos? descendants))
+    (let [[head-fam & rest-fams]
+          (map (fn [{id :id :as fam}]
+                 (let [children (->> (ged/family-children g fam)
+                                     (map (fn [child]
+                                            (if (empty? (ged/children g child))
+                                              (c-node child)
+                                              (child-node g child [[:id id]]
+                                                          (update-in opts [:descendants]
+                                                                     #(when (some? %) (dec %)))))))
+                                     (filter some?))]
+                   (if-let [spouse (ged/spouse g fam person)]
+                     (into [(-> (p-node spouse)
+                                (add-marriage fam))]
+                           children)
+                     children)))
+               (ged/families g person))]
+      {:node :child
+       :options options
+       :content (into [(g-node person)]
+                      (into head-fam (map wrap-union rest-fams)))})))
 
 (defn sandclock
   "Create GTR structure of sand clock diagram.
@@ -200,15 +195,12 @@
 
    Params are: `g` — GED graph, `id` — proband ID.
    Options are `:siblings`, `:ancestor-siblings`."
-  ([g id options]
-   (sandclock g id options {}))
-  ([g id options opts]
-   (let [{:keys [siblings]} opts
-         proband (ged/indi g id)
-         [{fam-id :id}] (ged/families g proband)]
-     {:node :sandclock
-      :options options
-      :content (into [] (concat [(child-node g proband [[:id fam-id]] opts)]
-                                (when siblings
-                                  (map c-node (ged/siblings g proband)))
-                                (parent-node g proband [] opts)))})))
+  [g id options & {:keys [siblings] :as opts}]
+  (let [proband (ged/indi g id)
+        [{fam-id :id}] (ged/families g proband)]
+    {:node :sandclock
+     :options options
+     :content (into [] (concat [(child-node g proband [[:id fam-id]] opts)]
+                               (when siblings
+                                 (map c-node (ged/siblings g proband)))
+                               (parent-node g proband [] opts)))}))
