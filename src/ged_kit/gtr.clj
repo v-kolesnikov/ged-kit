@@ -132,7 +132,7 @@
   ([person options] (node person :p options)))
 
 (defn parent-node
-  "Subgraph `parent`. A parent subgraph is a family where the g node acts as
+  "Subgraph `parent`. A parent subgraph is a family where the `g` node acts as
    a child. This family may have arbitrary child and parent leaves. Also, this
    family may have arbitrary parent subgraphs.
 
@@ -148,12 +148,15 @@
              (p-node spouse)
              {:node :parent
               :options options
-              :content (into [] (concat [(g-node spouse)]
-                                        (when ancestor-siblings
-                                          (map c-node (ged/siblings g spouse)))
-                                        (parent-node g spouse []
-                                                     (update-in opts [:ancestors]
-                                                                #(when (some? %) (dec %))))))}))
+              :content (->> (concat (when ancestor-siblings
+                                      (map c-node (ged/siblings-older g spouse)))
+                                    [(g-node spouse)]
+                                    (when ancestor-siblings
+                                      (map c-node (ged/siblings-younger g spouse)))
+                                    (parent-node g spouse []
+                                                 (update-in opts [:ancestors]
+                                                            #(when (some? %) (dec %)))))
+                            (into []))}))
          (ged/parentes g person))))
 
 (defn child-node
@@ -200,7 +203,12 @@
         [{fam-id :id}] (ged/families g proband)]
     {:node :sandclock
      :options options
-     :content (into [] (concat [(child-node g proband [[:id fam-id]] opts)]
-                               (when siblings
-                                 (map c-node (ged/siblings g proband)))
-                               (parent-node g proband [] opts)))}))
+     :content (->> (concat (when siblings
+                             (->> (ged/siblings-older g proband)
+                                  (map c-node)))
+                           [(child-node g proband [[:id fam-id]] opts)]
+                           (when siblings
+                             (->> (ged/siblings-younger g proband)
+                                  (map c-node)))
+                           (parent-node g proband [] opts))
+                   (into []))}))

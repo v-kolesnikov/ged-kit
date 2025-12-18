@@ -253,3 +253,19 @@
   (when-let [fam (family g (get-in person ["FAMC" 0 :data 1]))]
     (->> (family-children g fam)
          (filter #(not= % person)))))
+
+(defn id< [id1 id2]
+  (neg? (compare id1 id2)))
+
+(defn id> [id1 id2]
+  (pos? (compare id1 id2)))
+
+(defn siblings-older [g {id :id :as person}]
+  (when-let [fam (family g (get-in person ["FAMC" 0 :data 1]))]
+    (->> (family-children g fam)
+         (filter #(id< (get % :id) id)))))
+
+(defn siblings-younger [g {id :id :as person}]
+  (when-let [fam (family g (get-in person ["FAMC" 0 :data 1]))]
+    (->> (family-children g fam)
+         (filter #(id> (get % :id) id)))))
