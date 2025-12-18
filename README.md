@@ -232,14 +232,14 @@ Usage: ged2gtr.bb input.ged XREF [OPTIONS]
   given XREF.
 
   Options:
-      --siblings          Whether to show the siblings of the target person
-      --xref              Target INDI Xref (second arg by default)
-  -v, --verbose           Detailed logging for debug
-  -d, --descendants       Number of descendant generations to graph
-      --ancestor-siblings Whether to show the siblings of the target person's ancestors
-  -a, --ancestos          Number of ancestor generations to graph
-      --banner            Whether to show the banner above the graph
       --input             Input GEDCOM file (first arg by default)
+      --xref              Target INDI Xref (second arg by default)
+      --siblings          Whether to show the siblings of the target person
+      --ancestor-siblings Whether to show the siblings of the target person's ancestors
+  -a, --ancestors         Number of ancestor generations to graph
+  -d, --descendants       Number of descendant generations to graph
+      --banner            Whether to show the banner above the graph
+  -v, --verbose           Detailed logging for debug
   -h, --help              Show this message and exit
 ```
 

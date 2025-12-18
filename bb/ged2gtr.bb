@@ -15,7 +15,7 @@
                :coerce :boolean}
     :ancestor-siblings {:desc "Whether to show the siblings of the target person's ancestors"
                         :coerce :boolean}
-    :ancestos {:desc "Number of ancestor generations to graph"
+    :ancestors {:desc "Number of ancestor generations to graph"
                :alias :a
                :coerce :long}
     :descendants {:desc "Number of descendant generations to graph"
@@ -27,6 +27,10 @@
               :alias :v}
     :help {:alias :h
            :desc "Show this message and exit"}}
+   :order [:input :xref
+           :siblings :ancestor-siblings
+           :ancestors :descendants
+           :banner :verbose :help]
    :args->opts [:input :xref]
    :exec-args {:siblings true
                :ancestor-siblings true
