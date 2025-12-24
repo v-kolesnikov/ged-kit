@@ -1,3 +1,11 @@
+% Produced by ged-kit.clj
+%
+% Arguments:
+% 	--siblings = true
+% 	--ancestor-siblings = true
+% 	--input = https://raw.githubusercontent.com/findmypast/gedcom-samples/refs/heads/main/Harry%20Potter.ged
+% 	--xref = I00071
+%
 sandclock[]{%
   child[id=F00026]{%
     g[id=I00071]{%
@@ -6,7 +14,7 @@ sandclock[]{%
       birth={}{},
       death={}{},
     }%
-    child[id=F00026]{%
+    child[id=F00023]{%
       g[id=I00060]{%
         sex=male,
         name=\pref{Phineas Nigellus} \surn{Black},
@@ -19,7 +27,7 @@ sandclock[]{%
         birth={}{},
         death={}{},
       }%
-      child[id=F00023]{%
+      child[id=F00020]{%
         g[id=I00049]{%
           sex=male,
           name=\pref{Arcturus} \surn{Black},
@@ -32,7 +40,7 @@ sandclock[]{%
           birth={}{},
           death={}{},
         }%
-        child[id=F00020]{%
+        child[id=F00012]{%
           g[id=I00036]{%
             sex=female,
             name=\pref{Cedrella} \surn{Black},
@@ -45,7 +53,7 @@ sandclock[]{%
             birth={}{},
             death={}{},
           }%
-          child[id=F00012]{%
+          child[id=F00007]{%
             g[id=I00018]{%
               sex=male,
               name=\pref{Arthur} \surn{Weasley},
@@ -58,7 +66,7 @@ sandclock[]{%
               birth={}{},
               death={}{},
             }%
-            child[id=F00007]{%
+            child[id=F00006]{%
               g[id=I00013]{%
                 sex=female,
                 name=\pref{Ginevra} \surn{Weasley},
@@ -90,7 +98,7 @@ sandclock[]{%
                 death={}{},
               }%
             }%
-            child[id=F00007]{%
+            child[id=F00008]{%
               g[id=I00019]{%
                 sex=male,
                 name=\pref{Ronald} \surn{Weasley},
@@ -116,7 +124,7 @@ sandclock[]{%
                 death={}{},
               }%
             }%
-            child[id=F00007]{%
+            child[id=F00009]{%
               g[id=I00020]{%
                 sex=male,
                 name=\pref{George} \surn{Weasley},
@@ -148,7 +156,7 @@ sandclock[]{%
               birth={}{},
               death={}{},
             }%
-            child[id=F00007]{%
+            child[id=F00010]{%
               g[id=I00024]{%
                 sex=male,
                 name=\pref{William} \surn{Weasley},
@@ -182,7 +190,7 @@ sandclock[]{%
             death={}{},
           }%
         }%
-        child[id=F00020]{%
+        child[id=F00022]{%
           g[id=I00051]{%
             sex=female,
             name=\pref{Callidora} \surn{Black},
@@ -208,7 +216,7 @@ sandclock[]{%
             death={}{},
           }%
         }%
-        child[id=F00020]{%
+        child[id=F00021]{%
           g[id=I00052]{%
             sex=female,
             name=\pref{Charis} \surn{Black},
@@ -241,7 +249,7 @@ sandclock[]{%
           }%
         }%
       }%
-      child[id=F00023]{%
+      child[id=F00024]{%
         g[id=I00061]{%
           sex=female,
           name=\pref{Belvina} \surn{Black},
@@ -273,7 +281,7 @@ sandclock[]{%
           death={}{},
         }%
       }%
-      child[id=F00023]{%
+      child[id=F00025]{%
         g[id=I00062]{%
           sex=male,
           name=\pref{Cygnus} \surn{Black},
@@ -286,7 +294,7 @@ sandclock[]{%
           birth={}{},
           death={}{},
         }%
-        child[id=F00025]{%
+        child[id=F00027]{%
           g[id=I00076]{%
             sex=male,
             name=\pref{Pollux} \surn{Black},
@@ -299,7 +307,7 @@ sandclock[]{%
             birth={}{},
             death={}{},
           }%
-          child[id=F00027]{%
+          child[id=F00032]{%
             g[id=I00083]{%
               sex=female,
               name=\pref{Walburga} \surn{Black},
@@ -331,7 +339,7 @@ sandclock[]{%
             birth={}{},
             death={}{},
           }%
-          child[id=F00027]{%
+          child[id=F00029]{%
             g[id=I00085]{%
               sex=male,
               name=\pref{Cygnus} \surn{Black},
@@ -350,7 +358,7 @@ sandclock[]{%
               birth={1951}{},
               death={1998}{},
             }%
-            child[id=F00029]{%
+            child[id=F00037]{%
               g[id=I00098]{%
                 sex=female,
                 name=\pref{Andromeda} \surn{Black},
@@ -363,7 +371,7 @@ sandclock[]{%
                 birth={}{},
                 death={}{},
               }%
-              child[id=F00037]{%
+              child[id=F00038]{%
                 g[id=I00105]{%
                   sex=female,
                   name=\pref{Nymphadora} \surn{Tonks},
@@ -384,7 +392,7 @@ sandclock[]{%
                 }%
               }%
             }%
-            child[id=F00029]{%
+            child[id=F00034]{%
               g[id=I00099]{%
                 sex=female,
                 name=\pref{Narcissa} \surn{Black},
@@ -397,7 +405,7 @@ sandclock[]{%
                 birth={}{},
                 death={}{},
               }%
-              child[id=F00034]{%
+              child[id=F00035]{%
                 g[id=I00101]{%
                   sex=male,
                   name=\pref{Draco} \surn{Malfoy},
@@ -426,7 +434,7 @@ sandclock[]{%
           birth={}{},
           death={}{},
         }%
-        child[id=F00025]{%
+        child[id=F00028]{%
           g[id=I00079]{%
             sex=female,
             name=\pref{Dorea} \surn{Black},
@@ -453,7 +461,7 @@ sandclock[]{%
         birth={}{},
         death={}{},
       }%
-      child[id=F00023]{%
+      child[id=F00030]{%
         g[id=I00064]{%
           sex=male,
           name=\pref{Sirius} \surn{Black},
@@ -466,7 +474,7 @@ sandclock[]{%
           birth={}{},
           death={}{},
         }%
-        child[id=F00030]{%
+        child[id=F00031]{%
           g[id=I00088]{%
             sex=male,
             name=\pref{Arcturus} \surn{Black},
@@ -485,7 +493,7 @@ sandclock[]{%
             birth={1925}{},
             death={1992}{},
           }%
-          child[id=F00031]{%
+          child[id=F00032]{%
             g[id=I00093]{%
               sex=male,
               name=\pref{Orion} \surn{Black},

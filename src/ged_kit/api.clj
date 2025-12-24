@@ -231,8 +231,11 @@
 (defn family [g id]
   (get g id))
 
-(defn families [g person]
-  (map #(family g (get-in % [:data 1])) (get person "FAMS")))
+(defn families
+  "Families where the person is a spouse."
+  [g person]
+  (map #(family g (get-in % [:data 1]))
+       (get person "FAMS")))
 
 (defn family-children [g fam]
   (->> (get fam "CHIL")

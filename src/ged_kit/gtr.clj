@@ -169,13 +169,14 @@
   [g person options & {:keys [descendants] :as opts}]
   (when (or (nil? descendants)
             (pos? descendants))
-    (let [[head-fam & rest-fams]
-          (map (fn [{id :id :as fam}]
+    (let [[{id :id}] (ged/families g person)
+          [head-fam & rest-fams]
+          (map (fn [fam]
                  (let [children (->> (ged/family-children g fam)
                                      (map (fn [child]
                                             (if (empty? (ged/children g child))
                                               (c-node child)
-                                              (child-node g child [[:id id]]
+                                              (child-node g child []
                                                           (update-in opts [:descendants]
                                                                      #(when (some? %) (dec %)))))))
                                      (filter some?))]
@@ -186,7 +187,7 @@
                      children)))
                (ged/families g person))]
       {:node :child
-       :options options
+       :options (into [[:id id]] options)
        :content (into [(g-node person)]
                       (into head-fam (map wrap-union rest-fams)))})))
 
@@ -199,14 +200,13 @@
    Params are: `g` — GED graph, `id` — proband ID.
    Options are `:siblings`, `:ancestor-siblings`."
   [g id options & {:keys [siblings] :as opts}]
-  (let [proband (ged/indi g id)
-        [{fam-id :id}] (ged/families g proband)]
+  (let [proband (ged/indi g id)]
     {:node :sandclock
      :options options
      :content (->> (concat (when siblings
                              (->> (ged/siblings-older g proband)
                                   (map c-node)))
-                           [(child-node g proband [[:id fam-id]] opts)]
+                           [(child-node g proband [] opts)]
                            (when siblings
                              (->> (ged/siblings-younger g proband)
                                   (map c-node)))
